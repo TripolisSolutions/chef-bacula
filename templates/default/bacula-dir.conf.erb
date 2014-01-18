@@ -18,7 +18,7 @@ Director {                            # define myself
   QueryFile = "/etc/bacula/scripts/query.sql"
   WorkingDirectory = "/var/lib/bacula"
   PidDirectory = "/var/run/bacula"
-  Maximum Concurrent Jobs = 1
+  Maximum Concurrent Jobs = 100
   Password = "<%= node['bacula']['dir']['password'] %>"         # Console password
   Messages = Daemon
   DirAddress = <%= node['bacula']['dir']['address'] %>
@@ -311,6 +311,8 @@ Storage {
   Password = "<%= @bacula_storage['bacula']['sd']['password'] %>"
   Device = FileStorage
   Media Type = File
+  Maximum Concurrent Jobs = 50
+
 }
 
 
